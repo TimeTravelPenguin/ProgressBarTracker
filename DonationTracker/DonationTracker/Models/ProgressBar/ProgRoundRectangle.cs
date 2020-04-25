@@ -7,10 +7,10 @@
 // File Name: ProgRoundRectangle.cs
 // 
 // Current Data:
-// 2020-04-23 5:23 PM
+// 2020-04-26 1:11 AM
 // 
 // Creation Date:
-// -- 
+// 2020-04-25 1:31 PM
 
 #endregion
 
@@ -18,32 +18,42 @@ using SkiaSharp;
 
 namespace DonationTracker.Models.ProgressBar
 {
-  internal class ProgRoundRectangle : ProgShapeBase
-  {
-    public float RadiusX { get; set; }
-    public float RadiusY { get; set; }
-
-    public static ProgRoundRectangle Zero => new ProgRoundRectangle(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-
-    public ProgRoundRectangle(float xpos, float ypos, float width, float height, float radX, float radY, byte red,
-      byte green, byte blue, byte alpha)
+    internal class ProgRoundRectangle : ProgShapeBase
     {
-      XPos = xpos;
-      YPos = ypos;
-      Width = width;
-      Height = height;
-      RadiusX = radX;
-      RadiusY = radY;
-      Red = red;
-      Green = green;
-      Blue = blue;
-      Alpha = alpha;
-    }
+        private float _radiusX;
+        private float _radiusY;
 
-    public override void Draw(SKCanvas canvas)
-    {
-      canvas.DrawRoundRect(XPos, YPos, Width, Height, RadiusX, RadiusY,
-        new SKPaint {Color = new SKColor(Red, Green, Blue, Alpha)});
+        public float RadiusX
+        {
+            get => _radiusX;
+            set => SetValue(ref _radiusX, value);
+        }
+
+        public float RadiusY
+        {
+            get => _radiusY;
+            set => SetValue(ref _radiusY, value);
+        }
+
+        public ProgRoundRectangle(float xPos, float yPos, float width, float height, float radX, float radY, byte red,
+            byte green, byte blue, byte alpha)
+        {
+            XPos = xPos;
+            YPos = yPos;
+            Width = width;
+            Height = height;
+            RadiusX = radX;
+            RadiusY = radY;
+            Red = red;
+            Green = green;
+            Blue = blue;
+            Alpha = alpha;
+        }
+
+        public override void Draw(SKCanvas canvas)
+        {
+            canvas.DrawRoundRect(XPos, YPos, Width, Height, RadiusX, RadiusY,
+                new SKPaint {Color = new SKColor(Red, Green, Blue, Alpha)});
+        }
     }
-  }
 }

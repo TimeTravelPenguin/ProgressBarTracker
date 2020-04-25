@@ -6,6 +6,7 @@
     xmlns:local="clr-namespace:DonationTracker.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModels="clr-namespace:DonationTracker.ViewModels"
+    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
     Title="MainWindow"
     Width="800"
     Height="450"
@@ -16,6 +17,104 @@
     </Window.DataContext>
 
     <Grid>
-        <Image Source="{Binding IS}" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0">
+            <MenuItem Header="_Settings" />
+        </Menu>
+
+        <Image
+            Grid.Row="1"
+            Width="auto"
+            Height="150"
+            HorizontalAlignment="Center"
+            Source="{Binding ImageSource}" />
+
+        <GroupBox Grid.Row="2" Header="Progress Bar Settings">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="5" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="5" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="5" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="5" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="5" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="5" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Text="Height:" />
+
+                <TextBox
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    Text="{Binding ProgBarInfo.Height}" />
+
+                <TextBlock
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Text="Width:" />
+
+                <TextBox
+                    Grid.Row="2"
+                    Grid.Column="2"
+                    Text="{Binding ProgBarInfo.Width}" />
+
+                <TextBlock
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    Text="DPI:" />
+
+                <TextBox
+                    Grid.Row="4"
+                    Grid.Column="2"
+                    Text="{Binding ProgBarInfo.Dpi}" />
+
+                <TextBlock
+                    Grid.Row="6"
+                    Grid.Column="0"
+                    VerticalAlignment="Center"
+                    Text="Background Colour:" />
+
+                <xctk:ColorPicker
+                    Grid.Row="6"
+                    Grid.Column="2"
+                    Width="100" />
+
+                <TextBlock
+                    Grid.Row="8"
+                    Grid.Column="0"
+                    VerticalAlignment="Center"
+                    Text="Foreground Colour:" />
+
+                <xctk:ColorPicker
+                    Grid.Row="8"
+                    Grid.Column="2"
+                    Width="100" />
+
+            </Grid>
+        </GroupBox>
+
+        <Button
+            Grid.Row="3"
+            Command="{Binding CommandRefreshProgBar}"
+            Content="Refresh" />
     </Grid>
 </Window>
