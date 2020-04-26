@@ -1,4 +1,20 @@
-﻿using System;
+﻿#region Title Header
+
+// Name: Phillip Smith
+// 
+// Solution: DonationTracker
+// Project: DonationTracker
+// File Name: PropertyChangedBase.cs
+// 
+// Current Data:
+// 2020-04-26 4:15 PM
+// 
+// Creation Date:
+// 2020-04-25 1:30 PM
+
+#endregion
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;

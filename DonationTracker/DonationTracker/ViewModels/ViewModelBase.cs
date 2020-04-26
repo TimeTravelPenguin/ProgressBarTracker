@@ -7,7 +7,7 @@
 // File Name: ViewModelBase.cs
 // 
 // Current Data:
-// 2020-04-26 12:40 AM
+// 2020-04-26 4:15 PM
 // 
 // Creation Date:
 // 2020-04-25 1:25 PM
@@ -18,7 +18,7 @@ using DonationTracker.Types;
 
 namespace DonationTracker.ViewModels
 {
-    internal class ViewModelBase : PropertyChangedBase
-    {
-    }
+  internal class ViewModelBase : PropertyChangedBase
+  {
+  }
 }

@@ -1,0 +1,144 @@
+﻿<UserControl
+  x:Class="DonationTracker.ViewModels.ProgBarSettingsView"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:local="clr-namespace:DonationTracker.ViewModels"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:progressBar="clr-namespace:DonationTracker.Models.ProgressBar"
+  xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+  d:DesignHeight="450"
+  d:DesignWidth="800"
+  mc:Ignorable="d">
+
+  <UserControl.DataContext>
+    <progressBar:ProgRoundRectangle />
+  </UserControl.DataContext>
+
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="5" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="5" />
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="5" />
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="5" />
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="5" />
+    </Grid.ColumnDefinitions>
+
+    <!--#region LHS-->
+    <Grid Column="1" Row="1">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="5" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="5" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="5" />
+        <ColumnDefinition Width="Auto" />
+      </Grid.ColumnDefinitions>
+
+      <TextBlock
+        Grid.Row="0"
+        Grid.Column="0"
+        VerticalAlignment="Center"
+        Text="Height:" />
+
+      <TextBox
+        Grid.Row="0"
+        Grid.Column="2"
+        Width="100"
+        VerticalAlignment="Center"
+        Text="{Binding Height}" />
+
+      <TextBlock
+        Grid.Row="2"
+        Grid.Column="0"
+        VerticalAlignment="Center"
+        Text="Width:" />
+
+      <TextBox
+        Grid.Row="2"
+        Grid.Column="2"
+        Width="100"
+        VerticalAlignment="Center"
+        Text="{Binding Width}" />
+
+      <TextBlock
+        Grid.Row="4"
+        Grid.Column="0"
+        VerticalAlignment="Center"
+        Text="Colour:" />
+
+      <xctk:ColorPicker
+        Grid.Row="4"
+        Grid.Column="2"
+        Width="100"
+        VerticalAlignment="Center"
+        SelectedColor="{Binding Color}" />
+    </Grid>
+    <!--#endregion-->
+
+    <!--#region RHS-->
+    <Grid Column="3" Row="1">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="5" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="5" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="5" />
+        <ColumnDefinition Width="Auto" />
+      </Grid.ColumnDefinitions>
+
+      <TextBlock
+        Grid.Row="0"
+        Grid.Column="0"
+        VerticalAlignment="Center"
+        Text="X Position:" />
+
+      <TextBox
+        Grid.Row="0"
+        Grid.Column="2"
+        Width="100"
+        VerticalAlignment="Center"
+        Text="{Binding XPos}" />
+
+      <TextBlock
+        Grid.Row="2"
+        Grid.Column="0"
+        VerticalAlignment="Center"
+        Text="Y Position:" />
+
+      <TextBox
+        Grid.Row="2"
+        Grid.Column="2"
+        Width="100"
+        VerticalAlignment="Center"
+        Text="{Binding YPos}" />
+
+      <TextBlock
+        Grid.Row="4"
+        Grid.Column="0"
+        VerticalAlignment="Center"
+        Text="Corner Radius:" />
+
+      <TextBox
+        Grid.Row="4"
+        Grid.Column="2"
+        Width="100"
+        VerticalAlignment="Center"
+        Text="{Binding EdgeRadius}" />
+    </Grid>
+    <!--#endregion-->
+  </Grid>
+</UserControl>
