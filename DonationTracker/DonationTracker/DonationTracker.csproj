@@ -153,6 +153,7 @@
     <Compile Include="Models\ProgressBar\IProgShape.cs" />
     <Compile Include="Models\ProgressBar\ProgRoundRectangle.cs" />
     <Compile Include="Models\ProgressBar\ProgShapeBase.cs" />
+    <Compile Include="Models\ShapeDrawer.cs" />
     <Compile Include="Models\UsdConverter.cs" />
     <Compile Include="Types\PropertyChangedBase.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />

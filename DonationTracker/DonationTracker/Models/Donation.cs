@@ -39,8 +39,8 @@ namespace DonationTracker.Models
       set
       {
         SetValue(ref _isUsd, value);
-        OnPropertyChanged(nameof(AudAmount));
-        OnPropertyChanged(nameof(RawAmount));
+        NotifyPropertyChanged(nameof(AudAmount));
+        NotifyPropertyChanged(nameof(RawAmount));
       }
     }
 

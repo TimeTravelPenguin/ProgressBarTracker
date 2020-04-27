@@ -36,7 +36,7 @@ namespace DonationTracker.Models
 
     private void UsdConverterOnPropertyChanged(object sender, PropertyChangedEventArgs e)
     {
-      OnPropertyChanged(nameof(DonationHistory));
+      NotifyPropertyChanged(nameof(DonationHistory));
     }
 
     private void DonationHistoryChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -57,12 +57,12 @@ namespace DonationTracker.Models
         }
       }
 
-      OnPropertyChanged(nameof(TotalAmount));
+      NotifyPropertyChanged(nameof(TotalAmount));
     }
 
     private void ItemPropertyChanged(object sender, PropertyChangedEventArgs e)
     {
-      OnPropertyChanged(nameof(TotalAmount));
+      NotifyPropertyChanged(nameof(TotalAmount));
     }
 
     public void Add(IDonation donation)
