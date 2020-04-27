@@ -7,7 +7,7 @@
 // File Name: MainWindowViewModel.cs
 // 
 // Current Data:
-// 2020-04-26 4:15 PM
+// 2020-04-27 4:02 PM
 // 
 // Creation Date:
 // 2020-04-25 1:31 PM
@@ -19,6 +19,7 @@ using System.IO;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using DonationTracker.Models;
 using DonationTracker.Models.ProgressBar;
 using Microsoft.Expression.Interactivity.Core;
 using SkiaSharp;
@@ -29,6 +30,8 @@ namespace DonationTracker.ViewModels
   {
     private ImageSource _imageSource;
     public ProgBarInfo ProgBarInfo { get; } = new ProgBarInfo();
+    public DonationLogger Donations { get; }
+    public IDonation PlaceholderDonation { get; }
 
     public ImageSource ImageSource
     {
@@ -37,10 +40,24 @@ namespace DonationTracker.ViewModels
     }
 
     public ActionCommand CommandRefreshProgBar { get; }
+    public ActionCommand CommandAddDonation { get; }
 
     public MainWindowViewModel()
     {
       CommandRefreshProgBar = new ActionCommand(CreateProgressBar);
+      CommandAddDonation = new ActionCommand(AddDonation);
+
+      Donations = new DonationLogger();
+      PlaceholderDonation = new Donation(Donations.UsdConverter);
+    }
+
+    private void AddDonation()
+    {
+      Donations.DonationHistory.Add(new Donation(PlaceholderDonation));
+      PlaceholderDonation.UserName = "";
+      PlaceholderDonation.RawAmount = 0;
+      PlaceholderDonation.Note = "";
+      PlaceholderDonation.IsUsd = false;
     }
 
     private void CreateProgressBar()

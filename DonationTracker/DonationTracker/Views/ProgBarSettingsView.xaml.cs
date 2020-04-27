@@ -16,7 +16,7 @@
 
 using System.Windows.Controls;
 
-namespace DonationTracker.ViewModels
+namespace DonationTracker.Views
 {
   /// <summary>
   ///   Interaction logic for ProgBarSettingsView.xaml

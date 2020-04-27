@@ -9,7 +9,7 @@
   xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
   Title="MainWindow"
   Width="570"
-  Height="450"
+  Height="586.667"
   mc:Ignorable="d">
 
   <Window.DataContext>
@@ -18,15 +18,11 @@
 
   <Grid>
     <Grid.RowDefinitions>
-      <RowDefinition Height="20" />
+      <RowDefinition Height="5" />
       <RowDefinition Height="Auto" />
       <RowDefinition Height="Auto" />
-      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
     </Grid.RowDefinitions>
-
-    <Menu Grid.Row="0">
-      <MenuItem Header="_Settings" />
-    </Menu>
 
     <Image
       Grid.Row="1"
@@ -35,6 +31,7 @@
       HorizontalAlignment="Center"
       Source="{Binding ImageSource}" />
 
+    <!--#region Settings-->
     <GroupBox Grid.Row="2" Header="Progress Bar Settings">
       <Grid Margin="5">
         <Grid.RowDefinitions>
@@ -44,7 +41,7 @@
         </Grid.RowDefinitions>
 
 
-        <TabControl Grid.Row="0">
+        <TabControl Grid.Row="0" Padding="5">
           <TabItem Header="Image Settings">
             <Grid>
               <Grid.RowDefinitions>
@@ -106,12 +103,50 @@
           </TabItem>
 
           <TabItem Header="Background">
-            <viewModels:ProgBarSettingsView DataContext="{Binding ProgBarInfo.Background}" />
+            <local:ProgBarSettingsView DataContext="{Binding ProgBarInfo.Background}" />
           </TabItem>
 
           <TabItem Header="Foreground">
-            <viewModels:ProgBarSettingsView DataContext="{Binding ProgBarInfo.InnerBar}" />
+            <local:ProgBarSettingsView DataContext="{Binding ProgBarInfo.InnerBar}" />
+          </TabItem>
 
+          <TabItem Header="Donation Settings">
+            <Grid>
+              <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="5" />
+                <RowDefinition Height="Auto" />
+              </Grid.RowDefinitions>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="Auto" />
+              </Grid.ColumnDefinitions>
+
+              <TextBlock
+                Grid.Row="0"
+                Grid.Column="0"
+                VerticalAlignment="Center"
+                Text="USD$1 = AUD$" />
+
+              <TextBox
+                Grid.Row="0"
+                Grid.Column="2"
+                Width="100"
+                Text="{Binding Donations.UsdConverter.UsdToAud}" />
+
+              <TextBlock
+                Grid.Row="2"
+                Grid.Column="0"
+                VerticalAlignment="Center"
+                Text="Rounding Amount:" />
+
+              <TextBox
+                Grid.Row="2"
+                Grid.Column="2"
+                Width="100"
+                Text="{Binding Donations.UsdConverter.RoundTo}" />
+            </Grid>
           </TabItem>
         </TabControl>
 
@@ -121,7 +156,136 @@
           Content="Refresh" />
       </Grid>
     </GroupBox>
+    <!--#endregion-->
 
+    <!--#region Donation Tracker-->
+    <GroupBox Grid.Row="3" Header="Donations" Padding="5,5,5,0">
 
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="*" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!--#region Add region-->
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+          </Grid.RowDefinitions>
+
+          <TextBlock
+            Grid.Row="0"
+            Grid.Column="0"
+            Text="Username:" />
+
+          <TextBox
+            Grid.Row="0"
+            Grid.Column="2"
+            Width="120"
+            Text="{Binding PlaceholderDonation.UserName}" />
+
+          <TextBlock
+            Grid.Row="0"
+            Grid.Column="4"
+            Text="Amount:" />
+
+          <TextBox
+            Grid.Row="0"
+            Grid.Column="6"
+            Width="120"
+            Text="{Binding PlaceholderDonation.RawAmount}" />
+
+          <CheckBox
+            Grid.Row="0"
+            Grid.Column="8"
+            VerticalAlignment="Center"
+            Content="Is Usd?"
+            IsChecked="{Binding PlaceholderDonation.IsUsd}" />
+
+          <TextBlock
+            Grid.Row="2"
+            Grid.Column="0"
+            Text="Note:" />
+
+          <TextBox
+            Grid.Row="2"
+            Grid.Column="2"
+            Grid.ColumnSpan="8"
+            Text="{Binding PlaceholderDonation.Note}" />
+
+          <Button
+            Grid.Row="4"
+            Grid.Column="0"
+            Grid.ColumnSpan="10"
+            Height="20"
+            Command="{Binding CommandAddDonation}"
+            Content="Add Donation" />
+        </Grid>
+        <!--#endregion-->
+
+        <!--#region Donations datagrid-->
+        <DataGrid
+          Grid.Row="2"
+          AutoGenerateColumns="False"
+          CanUserAddRows="True"
+          ItemsSource="{Binding Donations.DonationHistory, UpdateSourceTrigger=PropertyChanged}">
+          <DataGrid.Columns>
+            <DataGridTextColumn
+              Width="70"
+              Binding="{Binding TimeStamp, StringFormat=hh:mm tt, UpdateSourceTrigger=PropertyChanged}"
+              Header="Time"
+              IsReadOnly="True" />
+            <DataGridTextColumn
+              Width="70"
+              Binding="{Binding UserName, UpdateSourceTrigger=PropertyChanged}"
+              Header="Username" />
+            <DataGridTextColumn
+              Width="70"
+              Binding="{Binding RawAmount, StringFormat=${0}, UpdateSourceTrigger=LostFocus}"
+              Header="Amount" />
+            <DataGridCheckBoxColumn Binding="{Binding IsUsd, UpdateSourceTrigger=PropertyChanged}" Header="Is USD?" />
+            <DataGridTextColumn
+              Width="*"
+              Binding="{Binding Note, UpdateSourceTrigger=PropertyChanged}"
+              Header="Note" />
+          </DataGrid.Columns>
+        </DataGrid>
+        <!--#endregion-->
+
+        <!--#region Total footer-->
+        <StackPanel Grid.Row="4">
+          <Grid>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="Total:" />
+            <TextBlock Grid.Column="2" Text="{Binding Donations.TotalAmount, StringFormat=AUD${0}}" />
+          </Grid>
+        </StackPanel>
+        <!--#endregion-->
+      </Grid>
+    </GroupBox>
+    <!--#endregion-->
   </Grid>
 </Window>

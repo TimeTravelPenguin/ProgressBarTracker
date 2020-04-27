@@ -147,13 +147,17 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Models\Configuration.cs" />
+    <Compile Include="Models\Donation.cs" />
+    <Compile Include="Models\DonationLogger.cs" />
+    <Compile Include="Models\IDonation.cs" />
     <Compile Include="Models\ProgressBar\IProgShape.cs" />
     <Compile Include="Models\ProgressBar\ProgRoundRectangle.cs" />
     <Compile Include="Models\ProgressBar\ProgShapeBase.cs" />
+    <Compile Include="Models\UsdConverter.cs" />
     <Compile Include="Types\PropertyChangedBase.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Models\ProgressBar\ProgBarInfo.cs" />
-    <Compile Include="ViewModels\ProgBarSettingsView.xaml.cs">
+    <Compile Include="Views\ProgBarSettingsView.xaml.cs">
       <DependentUpon>ProgBarSettingsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\ViewModelBase.cs" />
@@ -191,7 +195,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Page Include="ViewModels\ProgBarSettingsView.xaml">
+    <Page Include="Views\ProgBarSettingsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
