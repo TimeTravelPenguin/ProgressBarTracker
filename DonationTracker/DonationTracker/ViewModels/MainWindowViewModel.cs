@@ -46,7 +46,7 @@ namespace DonationTracker.ViewModels
 
     private void UpdateImageBinding(object sender, PropertyChangedEventArgs e)
     {
-      NotifyPropertyChanged(nameof(ImageSource));
+      OnPropertyChanged(nameof(ImageSource));
     }
 
     private void CreateProgressBar()

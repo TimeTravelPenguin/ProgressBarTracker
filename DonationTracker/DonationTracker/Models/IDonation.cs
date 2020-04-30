@@ -15,10 +15,11 @@
 #endregion
 
 using System;
+using System.ComponentModel;
 
 namespace DonationTracker.Models
 {
-  internal interface IDonation
+  internal interface IDonation : INotifyPropertyChanged
   {
     string UserName { get; set; }
     DateTime TimeStamp { get; set; }

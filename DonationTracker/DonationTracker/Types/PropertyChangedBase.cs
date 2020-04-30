@@ -7,7 +7,7 @@
 // File Name: PropertyChangedBase.cs
 // 
 // Current Data:
-// 2020-04-28 9:39 AM
+// 2020-04-30 10:03 PM
 // 
 // Creation Date:
 // 2020-04-25 1:30 PM
@@ -25,7 +25,7 @@ namespace DonationTracker.Types
   {
     public event PropertyChangedEventHandler PropertyChanged;
 
-    protected void NotifyPropertyChanged(string propertyName)
+    protected void OnPropertyChanged(string propertyName)
     {
       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
@@ -43,7 +43,7 @@ namespace DonationTracker.Types
       }
 
       field = value;
-      NotifyPropertyChanged(propertyName);
+      OnPropertyChanged(propertyName);
 
       return true;
     }
