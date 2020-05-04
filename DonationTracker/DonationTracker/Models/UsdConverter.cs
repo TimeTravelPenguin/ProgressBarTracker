@@ -7,7 +7,7 @@
 // File Name: UsdConverter.cs
 // 
 // Current Data:
-// 2020-04-27 8:23 PM
+// 2020-05-04 3:45 PM
 // 
 // Creation Date:
 // 2020-04-27 3:05 PM
@@ -15,7 +15,7 @@
 #endregion
 
 using System;
-using DonationTracker.Types;
+using PenguinLib.PropertyChanged;
 
 namespace DonationTracker.Models
 {

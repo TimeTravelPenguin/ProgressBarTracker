@@ -7,7 +7,7 @@
 // File Name: DonationLogger.cs
 // 
 // Current Data:
-// 2020-04-30 10:03 PM
+// 2020-05-04 3:45 PM
 // 
 // Creation Date:
 // 2020-04-27 12:49 PM
@@ -16,8 +16,8 @@
 
 using System.ComponentModel;
 using System.Linq;
-using DonationTracker.Models.Observing_Collection;
-using DonationTracker.Types;
+using PenguinLib.Observable;
+using PenguinLib.PropertyChanged;
 
 namespace DonationTracker.Models
 {
@@ -30,7 +30,8 @@ namespace DonationTracker.Models
     public DonationLogger()
     {
       ((INotifyPropertyChanged) DonationHistory).PropertyChanged += TotalAmountChanged;
-      UsdConverter.PropertyChanged += UsdConverterOnPropertyChanged;
+
+      ((INotifyPropertyChanged) UsdConverter).PropertyChanged += UsdConverterOnPropertyChanged;
     }
 
     private void TotalAmountChanged(object sender, PropertyChangedEventArgs e)

@@ -7,7 +7,7 @@
 // File Name: ShapeDrawer.cs
 // 
 // Current Data:
-// 2020-04-28 9:29 AM
+// 2020-05-04 3:45 PM
 // 
 // Creation Date:
 // 2020-04-28 9:18 AM
@@ -20,7 +20,7 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using DonationTracker.Models.ProgressBar;
-using DonationTracker.Types;
+using PenguinLib.PropertyChanged;
 using SkiaSharp;
 
 namespace DonationTracker.Models

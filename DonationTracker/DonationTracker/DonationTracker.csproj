@@ -150,13 +150,11 @@
     <Compile Include="Models\Donation.cs" />
     <Compile Include="Models\DonationLogger.cs" />
     <Compile Include="Models\IDonation.cs" />
-    <Compile Include="Models\Observing Collection\ObservingCollection.cs" />
     <Compile Include="Models\ProgressBar\IProgShape.cs" />
     <Compile Include="Models\ProgressBar\ProgRoundRectangle.cs" />
     <Compile Include="Models\ProgressBar\ProgShapeBase.cs" />
     <Compile Include="Models\ShapeDrawer.cs" />
     <Compile Include="Models\UsdConverter.cs" />
-    <Compile Include="Types\PropertyChangedBase.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Models\ProgressBar\ProgBarInfo.cs" />
     <Compile Include="Views\ProgBarSettingsView.xaml.cs">
@@ -205,7 +203,15 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\C#_Offline\PenguinLib\PenguinLib\PenguinLib.csproj">
+      <Project>{0c39c15e-3f1f-408d-91d3-f5da02b67356}</Project>
+      <Name>PenguinLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\SkiaSharp.1.68.1.1\build\net45\SkiaSharp.targets" Condition="Exists('..\packages\SkiaSharp.1.68.1.1\build\net45\SkiaSharp.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

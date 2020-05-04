@@ -7,10 +7,10 @@
 // File Name: ProgBarSettingsView.xaml.cs
 // 
 // Current Data:
-// 2020-04-26 4:15 PM
+// 2020-05-04 3:45 PM
 // 
 // Creation Date:
-// 2020-04-26 3:33 PM
+// 2020-04-27 6:39 PM
 
 #endregion
 
