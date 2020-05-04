@@ -6,7 +6,6 @@
   xmlns:local="clr-namespace:DonationTracker.Views"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:viewModels="clr-namespace:DonationTracker.ViewModels"
-  xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
   Title="Progress Tracker Thingo"
   Width="570"
   Height="586.667"

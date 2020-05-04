@@ -7,7 +7,7 @@
 // File Name: Donation.cs
 // 
 // Current Data:
-// 2020-05-04 3:45 PM
+// 2020-05-04 4:38 PM
 // 
 // Creation Date:
 // 2020-04-27 1:27 PM
@@ -15,6 +15,7 @@
 #endregion
 
 using System;
+using DonationTracker.ViewModels;
 using PenguinLib.PropertyChanged;
 
 namespace DonationTracker.Models

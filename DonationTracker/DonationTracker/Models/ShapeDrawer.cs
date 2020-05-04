@@ -7,7 +7,7 @@
 // File Name: ShapeDrawer.cs
 // 
 // Current Data:
-// 2020-05-04 3:45 PM
+// 2020-05-04 4:45 PM
 // 
 // Creation Date:
 // 2020-04-28 9:18 AM
@@ -74,7 +74,7 @@ namespace DonationTracker.Models
         FileMode.Create))
       {
         BitmapEncoder encoder = new PngBitmapEncoder();
-        encoder.Frames.Add(BitmapFrame.Create(image ?? throw new ArgumentNullException(nameof(image))));
+        encoder.Frames.Add(BitmapFrame.Create(image ?? throw new NullReferenceException()));
         encoder.Save(fileStream);
       }
     }
